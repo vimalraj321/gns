@@ -1,8 +1,8 @@
 import { Repository } from "typeorm";
 import { User } from "../entities/user.entity";
 import { Game, GameCategory, GameStatus } from "../entities/game.entity";
-import Cryptr from "cryptr";
 import { v4 as uuidv4 } from "uuid";
+import CryptoJS from "crypto-js";
 
 export class GameService {
   constructor(
@@ -14,7 +14,8 @@ export class GameService {
     user: User,
     amount: number,
     gameCategory: GameCategory,
-    gameName: string
+    gameName: string,
+    verifyToken: string
   ) {
     const newGame = await this.gameRepository.create({
       user,
@@ -24,6 +25,7 @@ export class GameService {
       status: GameStatus.PENDING,
       gameId: uuidv4(),
       gameStartedAt: new Date(),
+      verifyToken,
     });
 
     const savedGame = await this.gameRepository.save(newGame);
@@ -31,7 +33,7 @@ export class GameService {
     return savedGame;
   }
 
-  async doneGame(gameId: string, gameResult: GameStatus) {
+  async doneGame(gameId: string, gameResult: GameStatus, verifyToken: string) {
     const decryptedGameId = this.decryptGameId(gameId);
 
     if (!decryptedGameId) {
@@ -50,6 +52,13 @@ export class GameService {
       return {
         success: false,
         message: "Game not found",
+      };
+    }
+
+    if (game.verifyToken !== verifyToken) {
+      return {
+        success: false,
+        message: "Invalid verify token",
       };
     }
 
@@ -92,8 +101,7 @@ export class GameService {
 
     if (!secretKey) return null;
 
-    const cryptr = new Cryptr(secretKey);
-    const decryptedEmail = cryptr.decrypt(email);
+    const decryptedEmail = CryptoJS.AES.decrypt(email, secretKey).toString();
 
     return decryptedEmail.split("~")[0];
   }
@@ -103,8 +111,7 @@ export class GameService {
 
     if (!secretKey) return null;
 
-    const cryptr = new Cryptr(secretKey);
-    const decryptedGameId = cryptr.decrypt(gameId);
+    const decryptedGameId = CryptoJS.AES.decrypt(gameId, secretKey).toString();
 
     return decryptedGameId;
   }

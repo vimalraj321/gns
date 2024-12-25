@@ -1,0 +1,13 @@
+/// mainnet
+// export const ADDRESSES = {
+//   PRESALE: "0xD5c84264E549950a2A6c4FDBC14eFcf46EB04968",
+//   USDT: "0x55d398326f99059fF775485246999027B3197955",
+//   CHAIN_ID: 56
+// } as const;
+
+//testnet
+export const ADDRESSES = {
+  PRESALE: "0x49e6dBa4e1ffdD5d65caACBb64c6D9460fA3E538",
+  USDT: "0x25ed48E0f7B9Be6024866A4eF4a3882333181517",
+  CHAIN_ID: 97,
+} as const;

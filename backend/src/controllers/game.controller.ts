@@ -12,7 +12,7 @@ export class GameController {
   ) {}
 
   createGame = catchAsync(async (req: Request, res: Response) => {
-    const { email, amount, gameName, gameCategory } = req.body;
+    const { email, amount, gameName, gameCategory, verifyToken } = req.body;
 
     const decryptedEmail = this.gameService.decryptEmail(email);
 
@@ -32,7 +32,8 @@ export class GameController {
       user,
       amount,
       gameCategory,
-      gameName
+      gameName,
+      verifyToken
     );
 
     res.json({
@@ -43,15 +44,19 @@ export class GameController {
   });
 
   doneGame = catchAsync(async (req: Request, res: Response) => {
-    const { gameId, gameResult } = req.body;
+    const { gameId, gameResult, verifyToken } = req.body;
 
-    if (!gameId || !gameResult)
+    if (!gameId || !gameResult || !verifyToken)
       return res.status(400).json({ message: "Invalid request" });
 
     if (gameResult != GameStatus.WIN && gameResult != GameStatus.LOOSE)
       return res.status(400).json({ message: "Invalid game result" });
 
-    const game = await this.gameService.doneGame(gameId, gameResult);
+    const game = await this.gameService.doneGame(
+      gameId,
+      gameResult,
+      verifyToken
+    );
 
     if (!game.success) return res.status(400).json({ message: game.message });
 

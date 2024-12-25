@@ -1,40 +1,40 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Layout from '../components/Layout'
-import Home from '../pages/Home';
-import Withrawals from '../pages/Withrawals';
-import ReferralHistory from '../pages/ReferralHistory';
-import Investment from '../pages/Investment';
-import Admin from '../pages/Admin';
-import Swap from '../pages/Swap';
-import Game from '../pages/Game';
-import Dashboard from '../pages/dashboard/Dashboard';
-import User from '../pages/dashboard/User';
-import Withdrawal from '../pages/dashboard/Withdrawal';
-import WithdrawalReport from '../pages/dashboard/WithdrawalReport';
-import Investments from '../pages/dashboard/Investments';
-import Support from '../pages/dashboard/Support';
-import ResetPassword from '../pages/ResetPassword';
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "../components/Layout";
+import Home from "../pages/Home";
+import Withrawals from "../pages/Withrawals";
+import ReferralHistory from "../pages/ReferralHistory";
+import Investment from "../pages/Investment";
+import Admin from "../pages/Admin";
+import Swap from "../pages/Swap";
+import Game from "../pages/Game";
+import Dashboard from "../pages/dashboard/Dashboard";
+import User from "../pages/dashboard/User";
+import Withdrawal from "../pages/dashboard/Withdrawal";
+import WithdrawalReport from "../pages/dashboard/WithdrawalReport";
+import Investments from "../pages/dashboard/Investments";
+import Support from "../pages/dashboard/Support";
+import ResetPassword from "../pages/ResetPassword";
 
 const route = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
         path: "",
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "investments",
-        element: <Investment />
+        element: <Investment />,
       },
       {
         path: "records",
-        element: <Withrawals />
+        element: <Withrawals />,
       },
       {
         path: "referral-history",
-        element: <ReferralHistory />
+        element: <ReferralHistory />,
       },
       {
         path: "dashboard",
@@ -42,44 +42,44 @@ const route = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <Dashboard />
+            element: <Dashboard />,
           },
           {
             path: "users",
-            element: <User />
+            element: <User />,
           },
           {
             path: "requests",
-            element: <Withdrawal />
+            element: <Withdrawal />,
           },
           {
             path: "withrawal-report",
-            element: <WithdrawalReport />
+            element: <WithdrawalReport />,
           },
           {
             path: "investments",
-            element: <Investments />
+            element: <Investments />,
           },
           {
             path: "support",
-            element: <Support />
-          }
-        ]
+            element: <Support />,
+          },
+        ],
       },
       {
         path: "swap",
-        element: <Swap />
+        element: <Swap />,
       },
       {
         path: "games",
-        element: <Game />
+        element: <Game />,
       },
       {
         path: "reset-password",
-        element: <ResetPassword />
-      }
-    ]
-  }
+        element: <ResetPassword />,
+      },
+    ],
+  },
 ]);
 
-export default route
+export default route;

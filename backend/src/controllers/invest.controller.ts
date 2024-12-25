@@ -12,7 +12,7 @@ import cron from "node-cron";
 import { CoinService } from "../services/coin.service";
 import { Downlines } from "src/dtos/downlines";
 import { UserService } from "src/services/user.service";
-import Cryptr from "cryptr";
+import CryptoJS from "crypto-js";
 import { config } from "dotenv";
 import { Withdrawal } from "src/entities/withrawal.entity";
 
@@ -207,8 +207,10 @@ export class InvestmentController {
 
       if (!secretKey) return next(new AppError("Something went wrong", 500));
 
-      const cryptr = new Cryptr(secretKey);
-      const decryptedWallet = cryptr.decrypt(wallet);
+      const decryptedWallet = CryptoJS.AES.decrypt(
+        wallet,
+        secretKey
+      ).toString();
 
       // ========================= FIND USER ========================= //
       const user = await this.userRepository.findOne({

@@ -2,13 +2,15 @@ import { useCallback, useState } from "react";
 import { BASEURL } from "../components/context/GlobalContext";
 import toast from "react-hot-toast";
 import { Investment } from "../utils/data";
-import Cryptr from "cryptr";
+import CryptoJS from "crypto-js";
 
 const runInvestment = async (amount: number, wallet: string) => {
   try {
-    const cryptr = new Cryptr(import.meta.env.VITE_SECRET_KEY);
+    const encryptedWallet = CryptoJS.AES.encrypt(
+      wallet,
+      import.meta.env.VITE_SECRET_KEY
+    ).toString();
 
-    const encryptedWallet = cryptr.encrypt(wallet);
     const response = await fetch(`${BASEURL}/investment/invest`, {
       method: "POST",
       headers: {

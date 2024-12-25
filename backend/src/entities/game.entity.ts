@@ -38,6 +38,9 @@ export class Game {
   @Column({ type: "varchar", length: 255 })
   gameId!: string;
 
+  @Column({ type: "varchar", length: 255 })
+  verifyToken!: string;
+
   @Column({ type: "enum", enum: GameStatus, default: GameStatus.PENDING })
   status!: GameStatus;
 

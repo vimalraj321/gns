@@ -708,10 +708,8 @@ const Investment = () => {
         </div>
       </div>
 
-      <a
-        href={`${import.meta.env.VITE_GAMES_URL}/?ref=${
-          userProfileState?.referralCode
-        }`}
+      <Link
+        to={`/games`}
         className="flex gap-3 bg-secondary rounded-full w-full justify-center items-center py-4"
       >
         <img
@@ -730,7 +728,7 @@ const Investment = () => {
           alt="Investment GIF"
           className="w-[50px] h-full"
         />
-      </a>
+      </Link>
 
       <div className="border-secondary rounded-md border">
         <div className="bg-secondary text-white flex gap-2 px-5 w-full">
