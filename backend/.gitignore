@@ -1,0 +1,9 @@
+.env
+node_modules
+.DS_Store
+.vscode
+prompt.txt
+build
+dist
+test
+GPT INVESTMENT BACKEND.zip 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPT ARENA</title>
+    <link rel="icon" href="images/logo.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-content animate-slide-down">
+        <div class="logo-container">
+          <div class="logo-hexagon">
+            <div class="logo-inner">
+              <img src="images/logo.png" alt="Logo" />
+            </div>
+          </div>
+        </div>
+        <h1 class="site-title">GPTBOT GAMING UNIVERSE</h1>
+      </div>
+    </header>
+
+    <header class="balance-header">
+      <div class="balance-container">
+        <div class="balance">
+          Balance: $<span id="balance">Coming Soon</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="categories-container animate-fade-in">
+        <div id="categories" class="categories-grid">
+          <!-- Categories will be dynamically loaded here -->
+        </div>
+      </section>
+
+      <section
+        id="games-section"
+        class="games-container hidden animate-fade-in"
+      >
+        <button class="back-button" onclick="showCategories()">
+          ← Back to Categories
+        </button>
+        <div id="games-grid" class="games-grid">
+          <!-- Games will be dynamically loaded here -->
+        </div>
+      </section>
+    </main>
+
+    <div id="game-overlay" class="game-overlay hidden">
+      <div class="game-modal">
+        <button class="close-button" onclick="closeGame()">Close Game</button>
+        <iframe id="game-frame" class="game-frame" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
