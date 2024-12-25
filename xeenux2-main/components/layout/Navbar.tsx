@@ -13,10 +13,9 @@ import { useAccount } from "wagmi";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { initWallet, userAddress } = usePresale();
-const {isConnected} = useAccount();
+  const { isConnected } = useAccount();
 
-  useEffect(() => {
-  }, [userAddress]);
+  useEffect(() => {}, [userAddress]);
 
   return (
     <nav className="fixed top-3 w-full z-50">
@@ -25,7 +24,7 @@ const {isConnected} = useAccount();
           {/* Logo Section */}
           <div className="flex items-center space-x-2">
             <Link
-              href='/'
+              href="/"
               className="text-muted-foreground hover:text-foreground transition-colors font-light"
             >
               <Image
@@ -37,18 +36,15 @@ const {isConnected} = useAccount();
               />
             </Link>
 
-
             <span className="text-lg md:text-xl font-normal">XEENUX</span>
           </div>
-
-          
 
           {/* Desktop Buttons */}
 
           <div className="hidden md:flex items-center space-x-4">
             <div className="social flex gap-2 items-center">
-            <Link
-                href='https://x.com/'
+              <Link
+                href="https://x.com/xeenuxinfo?t=eYwfJYDsNOxdjbhqzvKX-A&s=09"
                 className="text-muted-foreground hover:text-foreground transition-colors font-light"
               >
                 <Image
@@ -58,10 +54,9 @@ const {isConnected} = useAccount();
                   height={24}
                   priority
                 />
-                
               </Link>
               <Link
-                href='https://t.me/'
+                href="https://t.me/xeenux"
                 className="text-muted-foreground hover:text-foreground transition-colors font-light"
               >
                 <Image
@@ -106,8 +101,9 @@ const {isConnected} = useAccount();
 
             {/* Mobile Menu */}
             <div
-              className={`fixed inset-0 bg-black bg-opacity-90 z-50 transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
-                }`}
+              className={`fixed inset-0 bg-black bg-opacity-90 z-50 transform transition-transform duration-300 ${
+                isOpen ? "translate-x-0" : "translate-x-full"
+              }`}
             >
               <div className="p-4 relative bg-dark flex flex-col h-full">
                 <div className="flex justify-between items-center mb-8">
@@ -130,28 +126,24 @@ const {isConnected} = useAccount();
                   </Button>
                 </div>
 
-                
-
                 {/* Buttons in Mobile Menu */}
                 <div className="mt-auto space-y-6">
                   <div className="flex flex-col items-center space-y-4">
-                   
                     <div className="social flex gap-4 items-center">
                       <Link
-                        href='https://x.com/'
+                        href="https://x.com/xeenuxinfo?t=eYwfJYDsNOxdjbhqzvKX-A&s=09"
                         className="text-muted-foreground flex items-center hover:text-foreground transition-colors font-light"
                       >
-                        
                         <Image
                           src="/images/x.svg"
                           alt="x-logo"
                           width={24}
                           height={24}
                           priority
-                        /> 
+                        />
                       </Link>
                       <Link
-                        href='https://x.com/'
+                        href="https://x.com/xeenuxinfo?t=eYwfJYDsNOxdjbhqzvKX-A&s=09"
                         className="text-muted-foreground flex gap-1 items-center hover:text-foreground transition-colors font-light"
                       >
                         <Image
@@ -162,10 +154,9 @@ const {isConnected} = useAccount();
                           priority
                         />
                         <span>Chat</span>
-
                       </Link>
                       <Link
-                        href='https://t.me/'
+                        href="https://t.me/xeenux"
                         className="text-muted-foreground gap-1 flex items-center hover:text-foreground transition-colors font-light"
                       >
                         <Image
@@ -176,12 +167,10 @@ const {isConnected} = useAccount();
                           priority
                         />
                         <span>Channel</span>
-
                       </Link>
                     </div>
-                    
-                      <w3m-button />
-                    
+
+                    <w3m-button />
                   </div>
                 </div>
               </div>
@@ -189,6 +178,6 @@ const {isConnected} = useAccount();
           </div>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 }

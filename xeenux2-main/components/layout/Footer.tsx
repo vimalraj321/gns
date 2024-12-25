@@ -5,16 +5,36 @@ import Link from "next/link";
 import Image from "next/image";
 import TelegramIcon from "@/public/images/telegram.svg";
 import XIcon from "@/public/images/x.svg";
+// import YoutubeIcon from "@/public/images/youtube.svg";
 
 const FOOTER_LINKS = {
-
-  "Socials": [
-    { label: "X", href: "https://x.com/", icon: XIcon },
-    { label: "Telegram Channel", href: "https://t.me/", icon: TelegramIcon },
-    { label: "Telegram Chat", href: "https://t.me/", icon: TelegramIcon },
-   
-    
-  ]
+  Socials: [
+    {
+      label: "X",
+      href: "https://x.com/xeenuxinfo?t=eYwfJYDsNOxdjbhqzvKX-A&s=09",
+      icon: XIcon,
+    },
+    {
+      label: "Telegram Channel",
+      href: "https://t.me/xeenux",
+      icon: TelegramIcon,
+    },
+    {
+      label: "Telegram Chat",
+      href: "https://t.me/xeenux",
+      icon: TelegramIcon,
+    },
+    {
+      label: "Youtube",
+      href: "https://youtube.com/@xeenux-xee?si=Rrj9I_ofGCa1uqPp",
+      // icon: YoutubeIcon,
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/xeenuxinfo?igsh=MWx3amRwMDRibDVvOQ==",
+      // icon: YoutubeIcon,
+    },
+  ],
 };
 
 export default function Footer() {
@@ -57,8 +77,6 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-
-
         </div>
       </div>
     </footer>

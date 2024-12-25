@@ -2,14 +2,12 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
-import { AlertBanner } from "@/components/ui/alert-banner/AlertBanner";
 import { PresaleProvider } from "@/providers/provider";
 const inter = Inter({ subsets: ["latin"] });
-import ContextProvider from '@/context'
-import { headers } from "next/headers";
+import ContextProvider from "@/context";
 
 export const metadata: Metadata = {
-  title: "XEENUX Network",
+  title: "XEENUX Presale",
   description:
     "Join presale & get profit from Trading Pool in USDT every month.",
 };
@@ -19,7 +17,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -27,10 +24,8 @@ export default function RootLayout({
           <ContextProvider cookies={null}>
             <Navbar />
             {children}
-            <AlertBanner />
           </ContextProvider>
         </PresaleProvider>
-
       </body>
     </html>
   );

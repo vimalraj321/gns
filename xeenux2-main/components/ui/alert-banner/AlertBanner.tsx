@@ -19,7 +19,7 @@ export function AlertBanner() {
 
   return (
     <div className="fixed w-full max-w-2xl mx-auto bottom-8 left-1/2 transform -translate-x-1/2 z-50 px-4">
-      <div className="relative bg-primary  shadow-2xl p-8 overflow-hidden">
+      <div className="relative bg-primary  shadow-2xl p-8 hidden">
         {/* Close Button */}
         <button
           onClick={() => setIsVisible(false)}
@@ -31,14 +31,14 @@ export function AlertBanner() {
         {/* Content */}
         <div className="space-y-4 w-full">
           <div className="mx-auto w-fit flex items-center justify-center ">
-          <Image
-            src="/images/xeenux.png"
-            alt="xee-logo"
-            width={100}
-            height={100}
-            priority
-            className=" border px-1 border-black rounded-xl"
-          />
+            <Image
+              src="/images/xeenux.png"
+              alt="xee-logo"
+              width={100}
+              height={100}
+              priority
+              className=" border px-1 border-black rounded-xl"
+            />
           </div>
 
           <TextContent
@@ -49,8 +49,10 @@ export function AlertBanner() {
           />
 
           <div className="text-center space-y-6">
-            <p className="text-sm md:text-md font-black text-white
-              drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            <p
+              className="text-sm md:text-md font-black text-white
+              drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+            >
               Don't miss this Opportunity
             </p>
             <div className="flex justify-center">
