@@ -386,6 +386,7 @@ export const CreateGlobalContext = ({ children }: Props) => {
     if (request.ok) {
       toast.success(response.message);
     }
+    location.reload();
   };
 
   return (

@@ -970,6 +970,9 @@ export class InvestmentController {
 
       if (!withdrawal) return next(new AppError("Withdrawal not found", 400));
 
+      if (withdrawal.status != "processing")
+        return next(new AppError("Withdrawal is not processing", 400));
+
       if (status === "rejected") {
         withdrawal.user.balance = parseFloat(
           (Number(withdrawal.user.balance) + Number(withdrawal.amount)).toFixed(

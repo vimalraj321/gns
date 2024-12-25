@@ -382,6 +382,11 @@ const Investment = () => {
   const [withdrawAmount, setWithdrawAmount] = useState<number>(0);
 
   const handleWithdrawal = useCallback(async () => {
+    if (withdrawAmount < 10) {
+      toast.error("Minimum withdrawal amount is 10 USDT");
+      return;
+    }
+
     userWithdrawal(withdrawAmount).then((res) => {
       if (res) {
         setTimeout(() => {
@@ -709,7 +714,7 @@ const Investment = () => {
       </div>
 
       <Link
-        to={`/games`}
+        to={`${import.meta.env.VITE_GAMES_URL}`}
         className="flex gap-3 bg-secondary rounded-full w-full justify-center items-center py-4"
       >
         <img

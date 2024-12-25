@@ -33,7 +33,7 @@ export const navList: NavLiistType[] = [
     image: "/MENU/Report.png",
   },
   {
-    path: `/games`,
+    path: `${import.meta.env.VITE_GAMES_URL}`,
     name: "Game",
     image: "/MENU/GAME.png",
   },
