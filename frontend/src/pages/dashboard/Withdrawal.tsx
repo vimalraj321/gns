@@ -18,10 +18,6 @@ const Withdrawal = () => {
   // Calculate indices for slicing the user list
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = withdrawalsState.slice(
-    indexOfFirstUser,
-    indexOfLastUser
-  );
 
   // Total pages
   const totalPages = Math.ceil(withdrawalsState.length / usersPerPage);
@@ -72,8 +68,12 @@ const Withdrawal = () => {
               </tr>
             </thead>
             <tbody>
-              {currentUsers
-                .filter((withd) => withd.status == "processing")
+              {withdrawalsState
+                .slice(indexOfFirstUser, indexOfLastUser)
+                .filter(
+                  (withd) =>
+                    withd.status == "processing" || withd.status == "failed"
+                )
                 .map((user) => (
                   <tr key={user.id} className="hover:bg-gray-100 text-xs">
                     <td className="py-2 px-4 border-b">{user.user?.wallet}</td>

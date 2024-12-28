@@ -378,15 +378,28 @@ export const CreateGlobalContext = ({ children }: Props) => {
       },
       body: JSON.stringify({ status }),
     });
-    const response = await request.json();
-    response;
-    if (!request.ok) {
-      toast.error(response.message);
+    const res = await request.json();
+    if (status != "rejected" && !res.success) {
+      toast((t) => (
+        <span>
+          Withdraw approval failed . Please check the withdraw wallet balance or
+          contact Gateway Support
+          <button
+            style={{
+              backgroundColor: "red",
+              color: "white",
+              margin: "10px",
+              padding: "5px",
+              borderRadius: "5px",
+            }}
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Dismiss
+          </button>
+        </span>
+      ));
     }
-    if (request.ok) {
-      toast.success(response.message);
-    }
-    location.reload();
+    withdrawalsForAdmin();
   };
 
   return (

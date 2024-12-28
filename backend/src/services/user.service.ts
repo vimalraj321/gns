@@ -362,7 +362,7 @@ export class UserService {
     }
   }
 
-  async userWithdrawal(tnx_id: string): Promise<any> {
+  async userWithdrawal(tnx_id: string) {
     const withdrawal = await this.withdrawalRepository.findOne({
       where: {
         transactionId: tnx_id,

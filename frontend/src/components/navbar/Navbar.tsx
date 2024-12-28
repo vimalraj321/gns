@@ -1,11 +1,13 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
+import { encryptEmailWithRandomString } from "../../utils/encrypt";
 import { IoMenu } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useAccount, useDisconnect } from "wagmi";
 import { NavLiistType, navList } from "../../utils/contants";
 // import { useGlobalContext } from "../context/GlobalContext";
 import toast from "react-hot-toast";
+import { useGlobalContext } from "../context/GlobalContext";
 // import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
@@ -70,6 +72,23 @@ const Navbar = () => {
   //   userProfile();
   // }, [isConnected, address, setUserWallet]);
 
+  const { userProfileState } = useGlobalContext();
+
+  console.log(userProfileState, "userProfileState");
+  const encryptedEmail = encryptEmailWithRandomString(
+    userProfileState?.email || ""
+  );
+
+  console.log(encryptedEmail, "encryptedEmail");
+
+  const gameUrl = navList.find((item) => item.path.includes("game"))?.path;
+
+  console.log(gameUrl, "gameUrl");
+
+  const gameUrlWithRef = `${gameUrl}?ref=${encryptedEmail}&amount=${userProfileState?.balance}`;
+
+  console.log(gameUrlWithRef, "gameUrlWithRef");
+
   return (
     <div className="flex bg-secondary top-0 sticky z-50 justify-between py-2 px-6 shadow-sm">
       <div className="flex items-center space-x-4">
@@ -83,7 +102,7 @@ const Navbar = () => {
       >
         {navList.map((item: NavLiistType, i: number) => (
           <Link
-            to={item.path}
+            to={item.path.includes("game") ? gameUrlWithRef : item.path}
             key={i}
             className="py-2 w-fit flex gap-1 my-auto"
             onClick={() => setNavOpen(false)}
