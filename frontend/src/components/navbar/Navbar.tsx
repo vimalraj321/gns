@@ -86,7 +86,6 @@ const Navbar = () => {
   console.log(gameUrl, "gameUrl");
 
   const gameUrlWithRef = `${gameUrl}?ref=${encryptedEmail}&amount=${userProfileState?.balance}`;
-
   console.log(gameUrlWithRef, "gameUrlWithRef");
 
   return (

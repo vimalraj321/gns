@@ -52,7 +52,14 @@ const ReferralHistory = () => {
   downlines;
   return (
     <div className="px-3 md:px-52 flex flex-col gap-10 py-10 md:py-20">
-      <div className="border-secondary rounded-md border">
+      <div className="fixed top-0 left-0 w-full h-screen -z-20">
+        <img
+          src="/images/bg.avif"
+          className="h-full w-full"
+          alt="background image"
+        />
+      </div>
+      <div className="border-secondary rounded-md border app_bg">
         <div className="bg-secondary text-white flex justify-between md:px-10 px-3 w-full py-3">
           <p className="text-2xl font-semibold">Referral History</p>
           <select

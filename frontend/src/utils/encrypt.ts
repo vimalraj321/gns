@@ -16,5 +16,5 @@ export const encryptEmailWithRandomString = (data: string) => {
     import.meta.env.VITE_GAMES_SECRET_KEY
   ).toString();
 
-  return encryptedEmail;
+  return encodeURIComponent(encryptedEmail);
 };
