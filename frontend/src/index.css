@@ -12,14 +12,15 @@
 
 body {
   font-family: "Rubik", sans-serif;
+  @apply bg-light text-dark;
 }
 
 .formal input {
-  @apply md:w-[300px];
+  @apply md:w-[300px] border-blue focus:border-secondary focus:ring-secondary;
 }
 
 .admin .active {
-  @apply bg-secondary bg-opacity-20 text-secondary;
+  @apply bg-secondary bg-opacity-10 text-secondary;
 }
 
 .admin .active .add {
@@ -27,5 +28,47 @@ body {
 }
 
 .app_bg {
-  @apply bg-[#c44694];
+  @apply bg-gradient-to-r from-primary via-secondary to-accent;
+}
+
+/* Additional utility classes */
+.btn-primary {
+  @apply bg-primary hover:bg-primary/90 text-light px-4 py-2 rounded-lg transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary/90 text-light px-4 py-2 rounded-lg transition-colors;
+}
+
+.btn-accent {
+  @apply bg-accent hover:bg-accent/90 text-light px-4 py-2 rounded-lg transition-colors;
+}
+
+.btn-blue {
+  @apply bg-blue hover:bg-blue/90 text-primary px-4 py-2 rounded-lg transition-colors;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-lg p-6 border border-light;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+}
+
+.hover-scale {
+  @apply transition-transform hover:scale-105;
+}
+
+/* New theme specific classes */
+.theme-border {
+  @apply border border-light;
+}
+
+.theme-input {
+  @apply bg-light border-blue focus:border-secondary focus:ring-secondary text-dark rounded-lg;
+}
+
+.theme-panel {
+  @apply bg-primary/5 backdrop-blur-sm rounded-xl p-6 border border-light/20;
 }
